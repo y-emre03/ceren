@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ceren İçin 💕</title>
+
+<style>
+body {
+  margin: 0;
+  overflow: hidden;
+  height: 100vh;
+  background: linear-gradient(to right, #ff758c, #ff7eb3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+button {
+  padding: 20px 40px;
+  font-size: 22px;
+  border: none;
+  border-radius: 50px;
+  background: white;
+  color: #ff4d6d;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 10;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+.message {
+  position: absolute;
+  top: 35%;
+  width: 100%;
+  text-align: center;
+  font-size: 50px;
+  color: white;
+  text-shadow: 0 0 25px rgba(255,0,100,0.9);
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.kiss, .heart {
+  position: absolute;
+  pointer-events: none;
+}
+
+.kiss {
+  font-size: 40px;
+  animation: floatUp 2s ease-out forwards;
+}
+
+.heart {
+  font-size: 25px;
+  animation: pop 1.5s ease-out forwards;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-150px); opacity: 0; }
+}
+
+@keyframes pop {
+  0% { transform: scale(0.5); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="message" id="loveText">Seni Çok Seviyorum Ceren 💕</div>
+<button onclick="sendLove()">Öpülmek İçin Tıkla 💋</button>
+
+<script>
+
+function randomPosition(element) {
+  element.style.left = Math.random() * window.innerWidth + "px";
+  element.style.top = Math.random() * window.innerHeight + "px";
+}
+
+function sendLove() {
+
+  // Yazıyı göster
+  document.getElementById("loveText").style.opacity = 1;
+
+  // 10 öpücük
+  for(let i = 0; i < 10; i++) {
+    const kiss = document.createElement("div");
+    kiss.innerHTML = "💋";
+    kiss.className = "kiss";
+    randomPosition(kiss);
+    document.body.appendChild(kiss);
+    setTimeout(() => kiss.remove(), 2000);
+  }
+
+  // 25 kalp
+  for(let i = 0; i < 25; i++) {
+    const heart = document.createElement("div");
+    heart.innerHTML = "💖";
+    heart.className = "heart";
+    randomPosition(heart);
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 1500);
+  }
+}
+
+</script>
+
+</body>
+</html>
